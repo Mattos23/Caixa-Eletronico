@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Caixa Eletrônico</title>
+
+	<script>
+
+
+		var nome = prompt("Qual seu nome?")
+		{
+			alert("Olá " + nome + " é um prazer ter você por aqui!")
+		}
+
+
+		var saldo = 100.5; //Variavel Global
+
+		function inicio() {
+			//ESCOPO
+			//Variavel Local
+
+			var escolha = parseInt(prompt('Selecione uma opção:\n\n 1.) Saldo\n 2.) Extrato\n 3.) Saque\n 4.) Depósito\n 5.) Transferência\n 6.) Sair'));
+
+			 switch (escolha) {
+				case 1:
+					ver_saldo();
+				case 2:
+					extrato();
+				case 3:
+					fazer_saque();
+				case 4:
+					fazer_deposito();
+				case 5: 
+				 	transferencia();
+				case 6:   	
+				    sair();
+		}
+	}
+
+		function ver_saldo() {
+            
+			senha()
+			{
+
+			alert('Seu saldo atual é: ' + saldo);
+			inicio();
+
+			}
+		}
+
+		function fazer_deposito() {
+
+			var deposito = parseFloat(prompt('Qual o valor para depósito?'));
+            
+
+			// Not a Number --> Isso é um não-número?
+			if (deposito < 0 || deposito === 0){
+                alert("Operação não autorizada.");
+                fazer_deposito()
+            } else if (isNaN(deposito) || deposito === '') {
+				alert('Por favor, informe um número.');
+				fazer_deposito();
+			} else {
+				saldo += deposito;
+				//saldo = saldo + deposito;
+				ver_saldo();
+			}
+		}
+
+		function fazer_saque() {
+			senha()
+			var saque = parseFloat(prompt('Qual o valor para saque?'));
+
+			if (isNaN(saque) || saque === '') {
+				alert('Por favor, informe um número.');
+				fazer_saque();
+			} else if ( saque > saldo ){
+				alert("Operação não autorizada.");
+			} else {
+				saldo -= saque;
+				//saldo = saldo - saque;
+				ver_saldo();
+			}
+		}
+
+		function extrato(){
+			senha()
+			{
+			alert("Seu extrato:\n\nDepósito feito de R$ 100,00\nSaque de R$-5,00");
+			inicio();
+		}
+					}
+
+		function transferencia(){
+			senha()
+			{
+			var numero_conta = prompt("Digite o número da conta:")
+			 if(isNaN(numero_conta)){
+				alert("Operação não Autorizada");
+				transferencia();
+			 }
+
+			var trans = prompt("Qual valor da transferência");
+
+			numero_conta = parseFloat(numero_conta);
+			trans = parseFloat(trans);
+
+         	if(trans > saldo){
+				alert("Operação não autorizada");
+                transferencia();
+			} else{
+				saldo -= trans;
+			}
+			
+			inicio();
+		}
+				}
+
+		function erro() {
+			alert('Por favor, informe um número entre 1 e 6.');
+			inicio();
+		}
+
+		function sair() {
+			var confirma = confirm('Você deseja sair?');
+			if (confirma) {
+                alert(nome + ", foi um prazer ter você por aqui!")
+				window.close();
+			} else {
+				inicio();
+			}
+		}
+
+        function senha(){
+
+            var senha_ = prompt("Digite a senha:");
+
+			while(senha_ != 3589){
+				alert("A senha está incorreta");
+				senha_ = prompt("Tente novamente:");
+			}
+
+			return true
+
+            
+              
+		}
+
+        inicio();
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>
